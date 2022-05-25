@@ -1,4 +1,4 @@
-const NFT_ADDRESS = "0x8e891e8D52e2dF006be2DcF88f81b59f91FdBef3"
+const NFT_ADDRESS = "0x77f4612129F863bdf6D1208126659ce8f6ef203b"
 const NFT_ABI = [
   {
     "inputs": [
