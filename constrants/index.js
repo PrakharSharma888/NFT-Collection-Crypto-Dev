@@ -1,6 +1,6 @@
 
 
-const WHITELIST_CONTRACT_ADDRESS = "0x717Afe255f820527476A9aE4C1fF47B99Fb17D94"
+const WHITELIST_CONTRACT_ADDRESS = "0xE9DcE7Da1607A81eCf61CD4cc76ef34740dFbBF4"
 
 const METADATA_URL = "https://nft-collection-crypto-dev.vercel.app/api/";
 

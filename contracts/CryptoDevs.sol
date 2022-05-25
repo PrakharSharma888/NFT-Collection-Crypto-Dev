@@ -2,6 +2,7 @@
 
 pragma solidity ^0.8.4;
 
+import "hardhat/console.sol";
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -23,7 +24,6 @@ contract CryptoDevs is ERC721Enumerable, Ownable{
         _;
     }
 
-
     constructor(string memory baseURI, address whitelistContract) ERC721("CryptoDev","CD"){
         _baseTokenURL = baseURI;
         whitelist = WhitelistInhert(whitelistContract);
@@ -33,10 +33,9 @@ contract CryptoDevs is ERC721Enumerable, Ownable{
         presaleStarted = true;
         presaleEnded = block.timestamp + 5 minutes;
     }
-
     function presaleMint() public payable onlyWhenPaused{
-        require(presaleStarted == true && block.timestamp < presaleEnded, "Presale has Ended");
-        require(whitelist.whitelistedAddresses(msg.sender), "You are not in the Whitelist");
+        require(presaleStarted && block.timestamp < presaleEnded, "Presale has Ended");
+        require(whitelist.WhitelistAddresses(msg.sender), "You are not whitelisted");
         require(tokenId <= maxTokenId, "Max Tokens Reached!");
         require(msg.value >= _price, "Price too low :(");
 
@@ -55,7 +54,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable{
         _safeMint(msg.sender, tokenId);
     }
 
-    function _baseURI() internal view override returns (string memory) {
+    function _baseURI() internal view virtual override returns (string memory) {
         return _baseTokenURL;
     }
 

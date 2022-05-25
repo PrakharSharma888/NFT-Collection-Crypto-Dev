@@ -72,12 +72,13 @@ export default function Home() {
         signer
       )
 
+      console.log("Presaleeee",await contractConnecter.presaleStarted())
+      console.log("Presaleeee",await contractConnecter.presaleStarted())
       const txn = await contractConnecter.presaleMint({
-        value : utils.parseEther('0.01')
+        value : utils.parseEther('0.01'),
       })
       await txn.wait()
-      window.alert("You have successfully minted a CryptoDev")
-
+      window.alert("You have successfully minted a CryptoDev");
     } catch (error) {
       console.log(error)
     }
@@ -119,7 +120,7 @@ export default function Home() {
       )
 
       const txn = contractConnecter.presaleStared()
-      txn.wait()
+      await txn.wait()
       setPresaleStarted(true)
     } catch (error) {
       console.log(error)
